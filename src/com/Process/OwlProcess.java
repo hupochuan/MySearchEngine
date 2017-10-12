@@ -23,8 +23,8 @@ import com.hp.hpl.jena.reasoner.rulesys.Rule;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.ReasonerVocabulary;
+import com.nlpir.wordseg.CLibrary;
 import com.sun.jna.Native;
-import com.wordseg.CLibrary;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

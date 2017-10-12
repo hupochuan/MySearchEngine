@@ -15,9 +15,10 @@ public class test {
 		//程序运行时间： 1839ms
 		//System.out.println(BaseAnalysis.parse(str));
 		//程序运行时间： 1887ms
-		//System.out.println(ToAnalysis.parse(str));
+		System.out.println(ToAnalysis.parse(str));
+		String tmp=DicAnalysis.parse(str).toString();
+		System.out.println(tmp);
 		
-		System.out.println(DicAnalysis.parse(str));
 //		System.out.println(IndexAnalysis.parse(str));
 //		System.out.println(NlpAnalysis.parse(str));
 		long endTime=System.currentTimeMillis(); //获取结束时间  

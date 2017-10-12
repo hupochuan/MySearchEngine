@@ -1,4 +1,4 @@
-package com.wordseg;
+package com.nlpir.wordseg;
 
 import com.sun.jna.Library;
 

@@ -16,7 +16,7 @@ import com.SystemFlow.FileOperation;
 public class Spiderforactivity {
 
 	public static void main(String[] args) {
-		String urlString = "http://www.crt.com.cn/news2007/news/hswenwu/hswenwu.html";
+		String urlString = "http://www.shicimingju.com/chaxun/zuozhe/91.html#chaxun_miao";
 //		String urlString = "http://www.crt.com.cn/news2007/News/hsgw.html";
 //		String urlString = "http://www.crt.com.cn/news2007/News/hsrl.html";
 		String URLString = "http://www.crt.com.cn";
@@ -31,7 +31,7 @@ public class Spiderforactivity {
 				
 				String[] strs = list.get(k).split("::");
 				ArrayList<String> arrayList = getDitial(URLString + strs[0]);
-				String title="∫Ï…´ŒƒŒÔ£∫"+strs[1];
+				String title="Á∫¢Ëâ≤ÊñáÁâ©Ôºö"+strs[1];
 				String content="";
 				for (int i1 = 0; i1 < arrayList.size(); i1++) {
 				
@@ -51,7 +51,7 @@ public class Spiderforactivity {
 
 	}
 
-	// ≈¿»°¡¥Ω”
+	// Áà¨ÂèñÈìæÊé•
 	public ArrayList<String> getAllURL(String URL) {
 		Document doc = null;
 		ArrayList<String> lists = new ArrayList<String>();
@@ -63,7 +63,7 @@ public class Spiderforactivity {
 					"85%");
 			// System.out.println(list.size());
 			for (int i = 0; i < list.size(); i++) {
-				Elements urltmp = list.get(i).getElementsByTag("a");// »°µ√¡À√ø∏ˆ<a>
+				Elements urltmp = list.get(i).getElementsByTag("a");// ÂèñÂæó‰∫ÜÊØè‰∏™<a>
 
 				for (int j = 0; j < urltmp.size(); j++) {
 					Element eleStrong = urltmp.get(j);
@@ -88,7 +88,7 @@ public class Spiderforactivity {
 	}
 
 	/*
-	 * ∏˘æ›ªÒ»°µΩµƒURLºÃ–¯ªÒ»°∆‰œÍœ∏ƒ⁄»› 
+	 * Ê†πÊçÆËé∑ÂèñÂà∞ÁöÑURLÁªßÁª≠Ëé∑ÂèñÂÖ∂ËØ¶ÁªÜÂÜÖÂÆπ 
 	 */
 	public static ArrayList<String> getDitial(String url) {
 		Document doc = null;
@@ -100,11 +100,11 @@ public class Spiderforactivity {
 //			String source = doc.select("td[width=34%]").first()
 //					.getElementsByTag("div").first().html();
 //			if (source != null) {
-//				source = source.split("£∫")[1];
+//				source = source.split("Ôºö")[1];
 //			}
 //			list.add(source);
 			for (int i = 0; i < sublist.size(); i++) {
-				Elements P = sublist.get(i).getElementsByTag("P"); // ªÒ»°div
+				Elements P = sublist.get(i).getElementsByTag("P"); // Ëé∑Âèñdiv
 				for (int j = 0; j < P.size(); j++) {
 					list.add(P.get(j).html());
 				}

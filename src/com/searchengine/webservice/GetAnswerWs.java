@@ -13,7 +13,7 @@ import com.SystemFlow.ContextHandling;
 import com.SystemFlow.StopwordDelete;
 import com.SystemFlow.SynonymExpand;
 import com.SystemFlow.WordStandardization;
-import com.wordseg.WordSeg;
+import com.nlpir.wordseg.WordSeg;
 
 public class GetAnswerWs {
 	
