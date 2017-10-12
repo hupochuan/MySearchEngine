@@ -1,0 +1,7 @@
+@prefix fa: <http://www.qtech.edu.cn/ontologies/myontology.owl#>.
+@include <RDFS>.
+@include <OWL>.
+
+[rule1: (?a fa:created_Red_writings ?b)->(?a fa:created ?b)]
+[rule2: (?a fa:created_redpoem ?b)->(?a fa:created ?b)]
+
