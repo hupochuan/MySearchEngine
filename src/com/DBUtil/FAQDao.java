@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class FAQDao {
 
     /**
-     * ·µ»Øquestion±íÖĞµÄquestion
+     * è¿”å›questionè¡¨ä¸­çš„question
      *
      * @author zhuwangnan
      *
@@ -50,7 +50,7 @@ public class FAQDao {
     }
 
     /**
-     * ·µ»ØÖ¸¶¨´óĞ¡µÄºòÑ¡ÎÊÌâ¼¯ÎÊÌâ¼¯£¬ÓÃÓÚ¼ÆËãÏàËÆ¶È
+     * è¿”å›æŒ‡å®šå¤§å°çš„å€™é€‰é—®é¢˜é›†é—®é¢˜é›†ï¼Œç”¨äºè®¡ç®—ç›¸ä¼¼åº¦
      *
      * @author zhuwangnan
      *
@@ -92,7 +92,7 @@ public class FAQDao {
     }
 
     /**
-     * ²éÑ¯FAQÊÇ·ñ´æÔÚ¸ÃÎÊÌâ
+     * æŸ¥è¯¢FAQæ˜¯å¦å­˜åœ¨è¯¥é—®é¢˜
      *
      * @author zhuwangnan
      *
@@ -119,7 +119,7 @@ public class FAQDao {
     }
 
     /**
-     * ²åÈëĞÂFAQµ½faq±íÖĞ
+     * æ’å…¥æ–°FAQåˆ°faqè¡¨ä¸­
      *
      * @author zhuwangnan
      *
@@ -143,7 +143,7 @@ public class FAQDao {
     }
 
     /**
-     * ·µ»ØFAQ±íÖĞÎ´Éú³ÉVSMÌØÕ÷ÏòÁ¿µÄquestion
+     * è¿”å›FAQè¡¨ä¸­æœªç”ŸæˆVSMç‰¹å¾å‘é‡çš„question
      *
      * @author zhuwangnan
      *
@@ -174,7 +174,7 @@ public class FAQDao {
     }
 
     /**
-     * ÉèÖÃFAQµÄVSMÏòÁ¿
+     * è®¾ç½®FAQçš„VSMå‘é‡
      *
      * @author zhuwangnan
      *
@@ -201,7 +201,7 @@ public class FAQDao {
     }
 
     /**
-     * ·µ»ØÊı¾İ¿âÖĞÎÊÌâµÄÊıÄ¿
+     * è¿”å›æ•°æ®åº“ä¸­é—®é¢˜çš„æ•°ç›®
      *
      * @author liling
      */
@@ -226,7 +226,7 @@ public class FAQDao {
     }
 
     /**
-     * ¸ù¾İÎÊÌâµÃµ½ÏàÓ¦µÄQuestion¶ÔÏó
+     * æ ¹æ®é—®é¢˜å¾—åˆ°ç›¸åº”çš„Questionå¯¹è±¡
      *
      * @author Code_Life_LiWan
      */
@@ -255,11 +255,12 @@ public class FAQDao {
     }
 
     /**
-     * ²éÕÒº¬ÓĞÌØ¶¨¹Ø¼ü´ÊµÄfaq
+     * æŸ¥æ‰¾å«æœ‰ç‰¹å®šå…³é”®è¯çš„faq
      *
      * @author Code_Life_LiWan
      */
     public ArrayList<Question> getQuestionsContainsKeyWord(ArrayList<String> sentence) {
+    	  
         ArrayList<Question> all = new ArrayList<Question>();
         if (sentence == null || sentence.isEmpty()) {
             return null;
@@ -269,12 +270,15 @@ public class FAQDao {
         for (int i = 1; i < size; i++) {
             sql = sql + " or question_seg like '%" + sentence.get(i) + "%'";
         }
+    	
         Connection conn = DbUtil.getCurrentConnection();
         PreparedStatement pstmt = null;
         try {
             pstmt = conn.prepareStatement(sql);
             ResultSet rel = pstmt.executeQuery();
+        
             while (rel.next()) {
+            
                 Question q = new Question();
                 q.setQuestion_id(rel.getInt(1));
                 q.setQuestion(rel.getString(2));
@@ -287,11 +291,12 @@ public class FAQDao {
         } finally {
             DbUtil.closeCurrentConnection();
         }
+      
         return all;
     }
 
     /**
-     * ·µ»ØFAQ±íÖĞµÄ¸ÃÎÊÌâµÄID
+     * è¿”å›FAQè¡¨ä¸­çš„è¯¥é—®é¢˜çš„ID
      *
      * @author zhuwangnan
      *
@@ -318,7 +323,7 @@ public class FAQDao {
     }
 
     /**
-     * ½«´¦ÀíºóµÄÎÊÌâ²åÈëµ½FAQ±íÖĞ£¬°üÀ¨¸ÃÎÊÌâÎÊ¾äÉú³ÉµÄVSMÏòÁ¿¡£
+     * å°†å¤„ç†åçš„é—®é¢˜æ’å…¥åˆ°FAQè¡¨ä¸­ï¼ŒåŒ…æ‹¬è¯¥é—®é¢˜é—®å¥ç”Ÿæˆçš„VSMå‘é‡ã€‚
      */
     public void InsertFAQandVSM(String prequestion, String question, String answer, String vsm) {
         Connection con = null;
@@ -339,7 +344,7 @@ public class FAQDao {
     }
 
     /**
-     * ¸ù¾İÏÖÏóºÍÉè±¸£¬²éÑ¯faqÖĞÓëÖ®¶ÔÓ¦µÄËùÓĞÏà¹ØÎÊÌâid£¬×é³Éstring·µ»Ø
+     * æ ¹æ®ç°è±¡å’Œè®¾å¤‡ï¼ŒæŸ¥è¯¢faqä¸­ä¸ä¹‹å¯¹åº”çš„æ‰€æœ‰ç›¸å…³é—®é¢˜idï¼Œç»„æˆstringè¿”å›
      */
     public ArrayList getQidString(String equname, String symname) {
         ArrayList<String> qidList = new ArrayList<String>();

@@ -1,5 +1,6 @@
 package com.searchengine.webservice;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,28 +8,31 @@ import java.util.Scanner;
 import com.DBUtil.FAQDao;
 import com.DBUtil.TempFAQDao;
 import com.Model.Ariticle;
-import com.Model.Result;
 import com.Model.SegmentWord;
 import com.Process.LuceneIndex;
-import com.SystemFlow.AnswerExtraction;
 import com.SystemFlow.ContextHandling;
-import com.SystemFlow.MatchingQuestions;
 import com.SystemFlow.StopwordDelete;
 import com.SystemFlow.SynonymExpand;
 import com.SystemFlow.WordStandardization;
 import com.nlpir.wordseg.WordSeg;
+import com.Util.HttpRequestUtil;
 
-public class GetAnswerWs {
-	
-	public static void main(String[] args){
-//		List<Ariticle> list = LuceneIndex.QueryIndex("毛泽东");
+public class GetWenda {
+
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 		Scanner input=new Scanner(System.in);
 		System.out.println("输入问题");
 		String question=input.next();
 		question=question.trim();
 		getOWLresult(question);
+	   
 		
 	}
+	
 	public void savefaq(String question) {
         FAQDao faqDao = new FAQDao();
         if (!faqDao.ExistQuestion(question)) {
@@ -38,7 +42,7 @@ public class GetAnswerWs {
     }
 
 	
-	public static ArrayList<String> getOWLresult(String  question){
+	public static void getOWLresult(String  question){
 		
 
 		
@@ -69,6 +73,7 @@ public class GetAnswerWs {
 	    	   System.out.print(standardResult.get(i).getWord()+"  ");
 		}
 	     
+
 	     //同义词扩展 
 	     ArrayList<SegmentWord> ExpandResult = standardResult;
 	     ExpandResult = new SynonymExpand().SynonymsExpand2(standardResult);
@@ -76,27 +81,27 @@ public class GetAnswerWs {
 	     for (int i = 0; i < ExpandResult.size(); i++) {
 	    	   System.out.print(ExpandResult.get(i).getWord()+"  ");
 		}
+	
+	     //推理拓展
 	     
-	    ArrayList<String> ProcessResult=new ArrayList<String>();
-	    for (int i = 0; i < ExpandResult.size(); i++) {
-	    	ProcessResult.add(ExpandResult.get(i).getWord());
-		}
-	     
-	    System.out.println("问句同义词扩展后：" + ProcessResult);
-	    ArrayList<Result> resList = new MatchingQuestions().GetMatchingQuestions(ProcessResult,30);
- 
-	    result = new AnswerExtraction().GetTopKAnswer(resList, 6, 0.4);
-	    
-	    for (int i = 0; i < result.size(); i++) {
-	    	System.out.println(result.get(i));
-			
-		}
-	    
-	    return result;
+//         ArrayList<String> equipments = new ContextHandling().GetEquipment(ExpandResult);
+         
+	     System.out.println("\n"+question);
+         String owllist=new ContextHandling().GetKeyword(ExpandResult);
+//       
+//         if(owllist.size()==0){      	
+//        	 return owllist;
+//        	
+//         }else{
+//        	 return owllist;
+//         }
+//         
+	
+//	     System.out.println("本体扩展结束其中包含的部件：" + equipments);
 		 
 		
 		
-	}
 	
+	}
 
 }
