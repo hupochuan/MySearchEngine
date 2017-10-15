@@ -265,6 +265,7 @@ public class FAQDao {
         if (sentence == null || sentence.isEmpty()) {
             return null;
         }
+   
         String sql = "select distinct question_id,question,answer,question_seg from faq where question_seg like '%" + sentence.get(0) + "%'";
         int size = sentence.size();
         for (int i = 1; i < size; i++) {

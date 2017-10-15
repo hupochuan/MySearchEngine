@@ -164,9 +164,7 @@ public class HttpRequestUtil {
                 e2.printStackTrace();
             }
         }
-        if(result.equals("")){
-        	result="查询不到";
-        }
+      
         	
         return result;
     }
@@ -258,12 +256,12 @@ public class HttpRequestUtil {
     	
 //		 String tmp=HttpRequestUtil.sendGet("http://news.baidu.com/ns?word=America&tn=newsrss&sr=0&cl=2&rn=20&ct=0", "");
 //		 System.out.println(tmp);
-    	String content=HttpRequestUtil.sendGet("https://zh.wikipedia.org/wiki/%E6%AF%9B%E6%B3%BD%E4%B8%9C", "");
+    	String content=HttpRequestUtil.sendGet("http://zhishi.me/api/entity/致野坂参三", "");
 
 		 //String content=HttpRequestUtil.sendGet("https://zh.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=%E6%AF%9B%E6%B3%BD%E4%B8%9C", "");
 		 System.out.println(content);
 		 //匹配汉字
-		 String regx1= "\"别名\": \\[?\"?(.+?)\"\\]?";  
+		 String regx1= "\"出生年月\": \\[?\"?(.+?)\"\\]?";  
 		 
 		 //String regx1= "([\u4e00-\u9fa5]+)"; 
 	     Pattern p= Pattern.compile(regx1);  
@@ -272,6 +270,7 @@ public class HttpRequestUtil {
 	     while(macher.find()){  
 	         System.out.println(macher.group(1).trim());  
 	     }
+	
     }
 
 }

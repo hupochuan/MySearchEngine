@@ -25,7 +25,8 @@ public class WordSeg {
 
              String[] tmp1=resultString.split(",");
          
-             for (int i = 0; i < tmp1.length; i++) {SegmentWord tmp=new SegmentWord(tmp1[i]);
+             for (int i = 0; i < tmp1.length; i++) {
+            	 SegmentWord tmp=new SegmentWord(tmp1[i]);
 	  			result.add(tmp);	
 	  		 }
              

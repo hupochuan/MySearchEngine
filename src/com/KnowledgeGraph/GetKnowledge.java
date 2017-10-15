@@ -56,11 +56,7 @@ public class GetKnowledge {
 	    	   System.out.print(standardResult.get(i).getWord()+"  ");
 		 } 
 	   
-//	     for (int i = 0; i < standardResult.size(); i++) {
-//	    	 
-//			 System.out.println(HttpRequestUtil.sendGet("http://zhishi.me/api/entity/"+standardResult.get(i).getWord(), "property=infobox"));
-//			 System.out.println(HttpRequestUtil.sendGet("http://knowledgeworks.cn:20313/cndbpedia/api/entityAVP", "entity="+standardResult.get(i).getWord()));
-//	     }
+
 	     String type=""; 
 	     ArrayList<SegmentWord> forowl=new ArrayList<>();
 	     for (int i = 0; i < standardResult.size(); i++) {

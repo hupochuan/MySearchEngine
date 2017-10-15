@@ -72,7 +72,7 @@ public class CPSet {
                 }
             }
         }
-        System.out.println("3333");
+       
         WordList = SortArray(WordList);
         return WordList;
     }
