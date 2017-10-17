@@ -8,10 +8,12 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.DBUtil.FAQDao;
 import com.DBUtil.WendaDao;
 import com.Jing.model.Activity;
 import com.KnowledgeGraph.GetKnowledge;
 import com.Model.Ariticle;
+import com.Model.Question;
 import com.Model.Result;
 import com.Model.SegmentWord;
 import com.Process.GetAnswerWs;
@@ -38,16 +40,17 @@ public class WebServiceForPHP {
 //		if(dao.getWord("事件内容")!=null){
 //			System.out.println("success");
 //		};
-		System.out.println(new WebServiceForPHP().getAnswerService("周恩来逝世时间",1,5));
-		 //改几行代码试试看
-//		Endpoint.publish("http://127.0.0.1:1233/searchengine/getAnswer",
-//				new WebServiceForPHP());
+		//System.out.println(new WebServiceForPHP().getAnswerService("毛泽东生日",1,5));
+//		 //改几行代码试试看
+		Endpoint.publish("http://211.64.195.78:1233/searchengine/getAnswer",
+				new WebServiceForPHP());
 
 	}
 
 	public String getAnswerService(String question, int pagenumber, int pagesize) {
 
 		ArrayList<String> result = new ArrayList<String>();
+		
 
 		// 分词
 		WordSeg abc = new WordSeg();
@@ -93,6 +96,8 @@ public class WebServiceForPHP {
 		// 获取词组中的实体和属性
 		ArrayList<String> entity = new ArrayList<>();
 		ArrayList<String> property = new ArrayList<>();
+		ArrayList<String> poetry = new ArrayList<>();
+		
 		int tag = 0;
 		WendaDao dao = new WendaDao();
 		for (int i = 0; i < ExpandResult.size(); i++) {
@@ -100,9 +105,13 @@ public class WebServiceForPHP {
 			String word = ExpandResult.get(i).getWord();
 
 			if (type.equals("nr") || type.equals("ns") || type.equals("nz")
-					|| type.equalsIgnoreCase("nd")) {
+					|| type.equals("nd")||type.equals("nt")) {
 
 				entity.add(word);
+				if(type.equals("nd")){
+					poetry.add(word);
+
+				}
 
 			}
 //			else{
@@ -145,7 +154,7 @@ public class WebServiceForPHP {
 			Card_Object = knowledge.getCardresult();
 			answer = knowledge.getAnswer();
 		}
-
+        String newques=question;
 		if (answer == null) {
 			ArrayList<Result> resList = new MatchingQuestions()
 					.GetMatchingQuestions(ProcessResult, 30);
@@ -154,9 +163,16 @@ public class WebServiceForPHP {
 				
 			}else{
 				result = new AnswerExtraction().GetTopKAnswer(resList, 6, 0.4);
-				for (int i = 0; i < result.size(); i++) {
-					System.out.println(result.get(i));
-
+				if(result.size()>=1){
+					FAQDao faqdao=new FAQDao();
+					Question ques=faqdao.getQuestionByContent(result.get(0));
+					if(ques!=null){
+						answer=ques.getAnswer();
+						newques=ques.getQuestion();
+						//question=ques.getQuestion();
+					}
+					
+					
 				}
 			}
 
@@ -183,11 +199,14 @@ public class WebServiceForPHP {
 		}
 
 		JSONObject jObject = new JSONObject();
+		jObject.put("poetry", poetry);
+		
 		jObject.put("Ariticles", jArray);
 
 		jObject.put("OWLresult", answer);
 
 		jObject.put("question", question);
+		jObject.put("newquestion", newques);
 
 		jObject.put("pagenumber", pagenumber);
 

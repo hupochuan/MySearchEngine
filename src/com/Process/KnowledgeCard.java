@@ -94,11 +94,20 @@ public class KnowledgeCard {
 			}
 		}
 		System.out.println("值是：\n" + baidu_value);
-		String baidubaike = baidu_value.toString();
-		String hudong = hudong_value.toString();
-		JSONObject baikeobject = new JSONObject(baidubaike);
-		JSONObject hudongbject = new JSONObject(hudong);
-
+		String baidubaike = null;
+		JSONObject baikeobject = new JSONObject();
+		if(baidu_value!=null){
+			baidubaike = baidu_value.toString();
+			baikeobject = new JSONObject(baidubaike);
+	
+		}
+		String hudong =null;
+		JSONObject hudongbject = new JSONObject();
+		if(hudong_value!=null){
+			 hudong = hudong_value.toString();
+			 hudongbject = new JSONObject(hudong);		
+		}
+		
 		Iterator itbaike = baikeobject.keys();
 
 		while (itbaike.hasNext()) {

@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.DBUtilJing.ActivityDao;
+import com.DBUtil.Jing.ActivityDao;
 import com.SystemFlow.FileOperation;
 
 public class Spiderforactivity {
@@ -31,7 +31,7 @@ public class Spiderforactivity {
 				
 				String[] strs = list.get(k).split("::");
 				ArrayList<String> arrayList = getDitial(URLString + strs[0]);
-				String title="ºìÉ«ÎÄÎï£º"+strs[1];
+				String title="ï¿½ï¿½É«ï¿½ï¿½ï¿½ï£º"+strs[1];
 				String content="";
 				for (int i1 = 0; i1 < arrayList.size(); i1++) {
 				
@@ -51,7 +51,7 @@ public class Spiderforactivity {
 
 	}
 
-	// ÅÀÈ¡Á´½Ó
+	// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<String> getAllURL(String URL) {
 		Document doc = null;
 		ArrayList<String> lists = new ArrayList<String>();
@@ -63,7 +63,7 @@ public class Spiderforactivity {
 					"85%");
 			// System.out.println(list.size());
 			for (int i = 0; i < list.size(); i++) {
-				Elements urltmp = list.get(i).getElementsByTag("a");// È¡µÃÁËÃ¿¸ö<a>
+				Elements urltmp = list.get(i).getElementsByTag("a");// È¡ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½<a>
 
 				for (int j = 0; j < urltmp.size(); j++) {
 					Element eleStrong = urltmp.get(j);
@@ -88,7 +88,7 @@ public class Spiderforactivity {
 	}
 
 	/*
-	 * ¸ù¾Ý»ñÈ¡µ½µÄURL¼ÌÐø»ñÈ¡ÆäÏêÏ¸ÄÚÈÝ 
+	 * ï¿½ï¿½Ý»ï¿½È¡ï¿½ï¿½ï¿½ï¿½URLï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ 
 	 */
 	public static ArrayList<String> getDitial(String url) {
 		Document doc = null;
@@ -100,11 +100,11 @@ public class Spiderforactivity {
 //			String source = doc.select("td[width=34%]").first()
 //					.getElementsByTag("div").first().html();
 //			if (source != null) {
-//				source = source.split("£º")[1];
+//				source = source.split("ï¿½ï¿½")[1];
 //			}
 //			list.add(source);
 			for (int i = 0; i < sublist.size(); i++) {
-				Elements P = sublist.get(i).getElementsByTag("P"); // »ñÈ¡div
+				Elements P = sublist.get(i).getElementsByTag("P"); // ï¿½ï¿½È¡div
 				for (int j = 0; j < P.size(); j++) {
 					list.add(P.get(j).html());
 				}

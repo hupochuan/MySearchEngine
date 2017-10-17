@@ -5,6 +5,8 @@
 package com.DBUtil;
 
 import com.Model.Question;
+import com.Model.SegmentWord;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -176,16 +178,16 @@ public class FAQDao {
     /**
      * 设置FAQ的VSM向量
      *
-     * @author zhuwangnan
+     * @author yangchuanlong
      *
      */
-    public void SetQuestionVSM(String question, ArrayList<String> vsmList) {
+    public void SetQuestionVSM(String question, ArrayList<SegmentWord> vsmList) {
         Connection con = null;
         con = DbUtil.getCurrentConnection();
         PreparedStatement ps;
         String vsm = "";
-        for (String temp : vsmList) {
-            vsm += temp + " ";
+        for (SegmentWord temp : vsmList) {
+            vsm += temp.getWord().trim() + " ";
         }
         try {
             ps = con.prepareStatement("update faq set question_seg=? where question=?");

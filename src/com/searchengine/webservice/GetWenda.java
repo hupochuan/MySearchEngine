@@ -87,7 +87,7 @@ public class GetWenda {
 //         ArrayList<String> equipments = new ContextHandling().GetEquipment(ExpandResult);
          
 	     System.out.println("\n"+question);
-         String owllist=new ContextHandling().GetKeyword(ExpandResult);
+         ArrayList<String> owllist=new ContextHandling().GetKeyword(ExpandResult);
 //       
 //         if(owllist.size()==0){      	
 //        	 return owllist;

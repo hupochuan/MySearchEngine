@@ -21,6 +21,7 @@ public class SegmentWord {
 		super();
 		this.segment = segment;
 		String[] tmp=segment.split("/");
+		//System.out.println(segment);
 		this.word=tmp[0];
 		this.wordclass=tmp[1];
 		

@@ -24,7 +24,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-import com.DBUtilJing.ActivityDao;
+import com.DBUtil.Jing.ActivityDao;
 import com.Jing.model.Activity;
 import com.Model.Ariticle;
 import com.Model.Constants;
@@ -34,7 +34,7 @@ public class LuceneActivityIndex {
 
 	public static void main(String[] args) throws Exception, Exception {
 
-		//LuceneActivityIndex.QueryIndex("°ËÆß»áÒé");
+		//LuceneActivityIndex.QueryIndex("ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½");
 		LuceneActivityIndex.BuildIndex(new ActivityDao().GetAllActivity());
 	}
 	public static void BuildIndex(ArrayList<Activity> activities) throws Exception {
@@ -66,7 +66,7 @@ public class LuceneActivityIndex {
 		ArrayList<Activity> result=new ArrayList<>();
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_4_10_2);
 		
-		// ´´½¨²éÑ¯
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 		QueryParser parser = new QueryParser(Version.LUCENE_4_10_2,
 				"discription", analyzer);
 		Query query = parser.parse(title);
