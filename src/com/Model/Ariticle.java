@@ -94,11 +94,6 @@ public class Ariticle {
 	public void setScore(float score) {
 		this.score = score;
 	}
-	public static void main(String[] args) throws Exception, Exception {
-		File tmp=new File("D:/luceneSpace/file/23.txt");
-		Ariticle.getAriticle(tmp);
-	}
-	
 	
 
 }

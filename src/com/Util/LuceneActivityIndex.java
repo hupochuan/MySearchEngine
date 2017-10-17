@@ -40,7 +40,7 @@ public class LuceneActivityIndex {
 	public static void BuildIndex(ArrayList<Activity> activities) throws Exception {
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_4_10_2);
 		
-		Directory dire = FSDirectory.open(new File("D:\\luceneSpace\\indexforactivity"));;
+		Directory dire = FSDirectory.open(new File(Constants.Activity_indexpath));;
 		
 		IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_4_10_2,
 				analyzer);
@@ -71,7 +71,7 @@ public class LuceneActivityIndex {
 				"discription", analyzer);
 		Query query = parser.parse(title);
 	
-		Directory dire = FSDirectory.open(new File("D:\\luceneSpace\\indexforactivity"));
+		Directory dire = FSDirectory.open(new File(Constants.Activity_indexpath));
 		IndexReader ir = DirectoryReader.open(dire);
 		IndexSearcher is = new IndexSearcher(ir);
 		TopDocs td = is.search(query, 1000);

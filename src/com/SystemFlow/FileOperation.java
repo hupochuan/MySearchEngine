@@ -30,7 +30,7 @@ public class FileOperation {
 	}
 
 	/**
-	 * ¶ÁTXTÎÄ¼þÄÚÈÝ
+	 * ï¿½ï¿½TXTï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param fileName
 	 * @return
@@ -60,7 +60,7 @@ public class FileOperation {
 				fileReader.close();
 			}
 		}
-		System.out.println("¶ÁÈ¡³öÀ´µÄÎÄ¼þÄÚÈÝÊÇ£º" + "\r\n" + result);
+		System.out.println("ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç£ï¿½" + "\r\n" + result);
 		return result;
 	}
 
@@ -89,15 +89,15 @@ public class FileOperation {
 	}
 
 	public static void contentToTxt(String filePath, String content) {
-		String str = new String(); // Ô­ÓÐtxtÄÚÈÝ
-		String s1 = new String();// ÄÚÈÝ¸üÐÂ
+		String str = new String(); // Ô­ï¿½ï¿½txtï¿½ï¿½ï¿½ï¿½
+		String s1 = new String();// ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½
 		try {
 			File f = new File(filePath);
 			if (f.exists()) {
-				System.out.print("ÎÄ¼þ´æÔÚ");
+				System.out.print("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½");
 			} else {
-				System.out.print("ÎÄ¼þ²»´æÔÚ");
-				f.createNewFile();// ²»´æÔÚÔò´´½¨
+				System.out.print("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+				f.createNewFile();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò´´½ï¿½
 			}
 			BufferedReader input = new BufferedReader(new FileReader(f));
 
@@ -120,7 +120,7 @@ public class FileOperation {
 		
 		ArrayList<String> content=new ArrayList<>();
 		try {
-			//·½·¨1
+			//ï¿½ï¿½ï¿½ï¿½1
 			
 			FileInputStream file = new FileInputStream(filepath);
 			InputStreamReader inputFileReader = new InputStreamReader(file,
@@ -128,35 +128,12 @@ public class FileOperation {
 
 			BufferedReader reader = new BufferedReader(inputFileReader);
 			String tempString;
-			// Ò»´Î¶ÁÈëÒ»ÐÐ£¬Ö±µ½¶ÁÈënullÎªÎÄ¼þ½áÊø
+			// Ò»ï¿½Î¶ï¿½ï¿½ï¿½Ò»ï¿½Ð£ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nullÎªï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 			while ((tempString = reader.readLine()) != null) {
 				content.add(tempString);
 //				System.out.println(tempString);
 			}
-			//·½·¨2
-//			 FileInputStream out = new FileInputStream(file);  
-//	         InputStreamReader isr = new InputStreamReader(out);  
-//	            int ch = 0;  
-//	            while ((ch = isr.read()) != -1) {  
-//	                System.out.print((char) ch);  
-//	            }  
-	        //·½·¨3
-//			FileInputStream fis = new FileInputStream(file);
-//			
-//			 
-//			int line;
-//			while ((line = fis.read()) != -1) {
-//				//osw.write("write something");
-//				System.out.print((char)line);
-//			}
-			//·½·¨4
-//			BufferedReader reader=new BufferedReader(new FileReader(file));
-//			String tmpstring;
-//			while((tmpstring=reader.readLine())!=null){
-//				String tmp=new String(tmpstring.getBytes(), "UTF-8");
-//				System.out.println(tmp);
-//				content.add(tmp); 
-//			}
+
 			 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -8,6 +8,7 @@ import com.DBUtil.EquipmentDao;
 import com.DBUtil.FaultFAQDao;
 import com.DBUtil.SymptomDao;
 import com.DBUtil.infoDao;
+import com.Model.Constants;
 import com.Model.SegmentWord;
 import com.hp.hpl.jena.ontology.*;
 import com.hp.hpl.jena.query.Query;
@@ -40,9 +41,9 @@ public class OwlProcess {
 	// http://www.qtech.edu.cn/ontologies/myontology.owl#
 	private static String NS = "http://www.qtech.edu.cn/ontologies/myontology.owl#";// owl本体命名空间
 	private static String PNS = "http://www.cidoc-crm.org/cidoc-crm/";// owl本体命名空间
-	private static String owlPath = "file:D:/workspace/MySearchEngine/myOntology.owl";// 本体路径
+	private static String owlPath = Constants.owlPath;// 本体路径
 	
-	private String rulePath = "file:D:/workspace/MySearchEngine/CultureOntology.rules";// 规则文件路径
+	private String rulePath = Constants.rulePath;// 规则文件路径
 
 	private OntModel om;
 	private List rules;

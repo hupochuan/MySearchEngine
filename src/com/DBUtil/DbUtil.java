@@ -14,7 +14,7 @@ public class DbUtil {
 //    private static String dbURL = "jdbc:mysql://rdsbuefubbuefub.mysql.rds.aliyuncs.com:3306/jinggangshan?useUnicode=true&characterEncoding=UTF-8";
 //    private static String userName = "insurance";
 //    private static String userPass = "123456";
-    private static String dbURL = "jdbc:mysql://localhost:3306/mobile?useUnicode=true&characterEncoding=UTF-8";
+    private static String dbURL = "jdbc:mysql://localhost:3306/red_culture?useUnicode=true&characterEncoding=UTF-8";
     private static String userName = "root";
     private static String userPass = "root";
     

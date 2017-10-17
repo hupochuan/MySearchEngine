@@ -42,7 +42,7 @@ public class WebServiceForPHP {
 //		};
 		//System.out.println(new WebServiceForPHP().getAnswerService("毛泽东生日",1,5));
 //		 //改几行代码试试看
-		Endpoint.publish("http://211.64.195.78:1233/searchengine/getAnswer",
+		Endpoint.publish("http://127.0.0.1:1233/searchengine/getAnswer",
 				new WebServiceForPHP());
 
 	}
